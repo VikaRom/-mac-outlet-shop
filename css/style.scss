@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body *{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+#wrapper{
+    width: 1024px;
+    margin: 0 auto;
+    @media  (max-width:1100px) {
+        width: 80%;    
+    }
+    @media  (max-width:850px) {
+        width: 70%;
+    }
+    
+}
+.name{
+    margin-top: 30px;
+    margin-left: 5%;
+   
+}
+.banner{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    img{
+        width:100% ;
+    }
+}
+
+.search{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    input{
+        width: 100%;
+        height: 30px;
+        border-radius: 5px;
+        border: 1px solid rgb(155, 154, 154);
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15); 
+    }
+}
+
+.container{
+    // margin-top: 30px;
+    // margin: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    @media  (max-width:850px) {
+        justify-content: center;
+    }
+    &__card{
+        
+        width: 300px;
+        height: 480px;
+        border: 1px solid rgb(219, 219, 219);
+        margin:10px 0;
+        border-radius: 5px;;
+        box-shadow: 0px 0px 15px rgba(82, 82, 82, 0.15); 
+        &__favorites{
+            display: flex;
+            justify-content: flex-end;
+            margin: 10px 5px;
+           
+            &.active{
+                color: red;
+            }
+        }
+        &__image{
+            display: flex;
+            justify-content: center;
+            img{
+                width:200px ;
+                height: 200px;
+            }
+        }
+        &__name{
+            margin-top: 10px;
+            text-align: center;
+        }
+        &__instock{
+            margin:15px ;
+            display: flex;
+            justify-content: center;
+            i{
+                color:green;
+                margin: auto 0;
+            }
+            p{
+                color: grey;
+                margin-left: 3px;
+            }
+        }
+        &__price{
+            margin:5px ;
+            color: grey;
+            text-align: center;
+        }
+        &__button{
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            button{
+                width: 150px;
+                height: 50px;
+                color: white;
+                background-color: #0E49B5 ;
+                border-color: transparent;
+                border-radius: 5px;
+                &.disabled {
+                    background-color: #DAE2EA;
+                    pointer-events: none;
+                }
+            }
+            
+        }
+        &__stats{
+            margin-top: 6px;
+            width: 300px;
+            height: 80px;
+            background-color:#DAE2EA ;
+            &__info{
+                padding: 7%;
+                display: flex;
+                &__right{
+                    p{
+                        text-align: center;
+                    }
+                }
+                &__left{
+                    width: 70%;
+                    font-size: 14px;
+                    color: #3B3E66;
+                    
+                }
+                i{
+                    color: red;
+                    margin-right: 5px;
+                }
+                
+            }
+        }
+
+    }
+}
