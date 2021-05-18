@@ -1,13 +1,16 @@
-export const rendarCard = function(item){
+export const rendarCard = function (item) {
     const container = document.createElement('div');
     container.className = 'container__card';
-
 
     const buttonLike = document.createElement('div');
     buttonLike.className = 'container__card__favorites'
     const imgFavorites = document.createElement('i')
-    imgFavorites.className = 'far fa-heart';
-    // imgFavorites.src = `<i class="far fa-heart"></i>`;
+    imgFavorites.className = `${item.isFavorite ? 'fas' : 'far'} fa-heart`;
+    buttonLike.onclick = function(){
+        item.isFavorite = !item.isFavorite;
+        imgFavorites.className = `${item.isFavorite ? 'fas' : 'far'} fa-heart`;
+    }
+////////////////////////////////
     buttonLike.appendChild(imgFavorites);
     container.appendChild(buttonLike)
 
@@ -29,12 +32,17 @@ export const rendarCard = function(item){
     const instockContainer = document.createElement('div')
     instockContainer.className = 'container__card__instock';
     const checkInstock = document.createElement('i')
-    checkInstock.className = 'far fa-check-circle';
+    if (item.orderInfo.inStock === 0) {
+        checkInstock.className = 'far fa-times-circle';
+    } else {
+        checkInstock.className = 'far fa-check-circle';
+    }
     const textP = document.createElement('p')
-    textP.innerText = `${item.orderInfo.inStock} left in stock`;//????????????????????????????????????
-    instockContainer.appendChild(checkInstock)
-    instockContainer.appendChild(textP)
-    container.appendChild(instockContainer)
+        textP.innerText = `${item.orderInfo.inStock} left in stock`;///////////////
+        instockContainer.appendChild(checkInstock)
+        instockContainer.appendChild(textP)
+        container.appendChild(instockContainer)
+
     //
     const priceContainer = document.createElement('div')
     priceContainer.className = 'container__card__price';
@@ -49,8 +57,8 @@ export const rendarCard = function(item){
     const button = document.createElement('button');
     button.innerText = 'Add to card';
     button.className = item.orderInfo.inStock > 0 ? '' : 'disabled';
-    button.disabled =  item.orderInfo.inStock < 1;
-    buttonContainer.appendChild (button);
+    button.disabled = item.orderInfo.inStock < 1;
+    buttonContainer.appendChild(button);
     container.appendChild(buttonContainer);
     //
     const containerStats = document.createElement('div')
@@ -83,15 +91,14 @@ export const rendarCard = function(item){
     return container;
 }
 
-export const rendarCards = function(arr=items){
+export const rendarCards = function (arr = items) {
     let container = document.querySelector('.container')
     container.innerHTML = '';
-    for(let i = 0; i<arr.length; i++){
+    for (let i = 0; i < arr.length; i++) {
         try {
             container.appendChild(rendarCard(arr[i]))
-        } catch(e){
+        } catch (e) {
             console.log(arr[i])
         }
     }
-   
 }
