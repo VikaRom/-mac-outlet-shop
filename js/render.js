@@ -6,11 +6,11 @@ export const rendarCard = function (item) {
     buttonLike.className = 'container__card__favorites'
     const imgFavorites = document.createElement('i')
     imgFavorites.className = `${item.isFavorite ? 'fas' : 'far'} fa-heart`;
-    buttonLike.onclick = function(){
+    buttonLike.onclick = function () {
         item.isFavorite = !item.isFavorite;
         imgFavorites.className = `${item.isFavorite ? 'fas' : 'far'} fa-heart`;
     }
-////////////////////////////////
+    ////////////////////////////////
     buttonLike.appendChild(imgFavorites);
     container.appendChild(buttonLike)
 
@@ -38,10 +38,10 @@ export const rendarCard = function (item) {
         checkInstock.className = 'far fa-check-circle';
     }
     const textP = document.createElement('p')
-        textP.innerText = `${item.orderInfo.inStock} left in stock`;///////////////
-        instockContainer.appendChild(checkInstock)
-        instockContainer.appendChild(textP)
-        container.appendChild(instockContainer)
+    textP.innerText = `${item.orderInfo.inStock} left in stock`;///////////////
+    instockContainer.appendChild(checkInstock)
+    instockContainer.appendChild(textP)
+    container.appendChild(instockContainer)
 
     //
     const priceContainer = document.createElement('div')

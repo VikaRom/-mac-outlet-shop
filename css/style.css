@@ -121,9 +121,10 @@ body * {
   width: 100%;
   height: 60px;
   border-radius: 5px;
-  border: 1px solid #9b9a9a;
+  border: 1px solid #dbdbdb;
   -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
           box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+  outline-color: #0e48b52f;
 }
 
 .searchInfo {
@@ -202,6 +203,7 @@ body * {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  width: 100%;
 }
 
 @media (max-width: 850px) {
@@ -336,5 +338,85 @@ body * {
 .container__card__stats__info i {
   color: red;
   margin-right: 5px;
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.main .filter {
+  margin: 10px 85px 0 0;
+  width: 450px;
+  height: 600px;
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 15px rgba(82, 82, 82, 0.15);
+          box-shadow: 0px 0px 15px rgba(82, 82, 82, 0.15);
+}
+
+.main .accordion__head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 20px;
+  font-size: 20px;
+  height: 60px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.main .accordion__head:hover {
+  background-color: #0e48b542;
+  cursor: pointer;
+}
+
+.main .accordion__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border-bottom: 1px solid #dbdbdb;
+  padding: 10px 35px 0px 15px;
+}
+
+.main .accordion__items--active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.main .accordion__items .slider {
+  margin-top: 10px;
+}
+
+.main .accordion__items .accordion__priceValue {
+  margin: 20px 0 10px;
+}
+
+.main .accordion__items label {
+  margin-bottom: 10px;
+  width: 100px;
+}
+
+.main .accordion__items label:hover {
+  cursor: pointer;
+}
+
+.main .accordion__items label input {
+  margin-right: 10px;
+}
+
+#sliderRange .slider-selection {
+  background-color: red !important;
 }
 /*# sourceMappingURL=style.css.map */
