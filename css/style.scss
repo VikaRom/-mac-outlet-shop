@@ -58,11 +58,34 @@ body *{
 }
 
 .banner{
+    width:1000px;
+    height: 500px;
     margin-top: 30px;
     display: flex;
     justify-content: center;
-    img{
-        width:100% ;
+    background-size: contain;
+    .mainForSlider{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        &__title{
+            padding: 10px 20px;
+            background: rgba(63, 63, 63, 0.856);
+        }
+        button{
+            margin-top: 30px;
+            font-size: 18px;
+            width: 150px;
+            height: 50px;
+            color: white;
+            background-color: #0E49B5 ;
+            border-color: transparent;
+            border-radius: 5px;
+        }
     }
 }
 
@@ -135,17 +158,17 @@ body *{
         justify-content: center;
     }
     &__card{
-        
+    
         width: 300px;
         height: 480px;
         border: 1px solid rgb(219, 219, 219);
-        margin:10px 0;
+        margin:15px 0;
         border-radius: 5px;;
         box-shadow: 0px 0px 15px rgba(82, 82, 82, 0.15); 
         &__favorites{
             display: flex;
             justify-content: flex-end;
-            margin: 10px 5px;
+            margin: 15px 0 60p;
            
             i.fas{
                 color: red;
@@ -235,14 +258,20 @@ body *{
 
 
 .main {
+    
     display: flex;
+    height: auto;
     .filter {
-        margin: 10px 85px 0 0;
+        display: none;
+        margin: 10px 50px 0 0;
         width: 450px;
-        height: 600px;
+        height: 100%;
         border:1px solid rgb(219, 219, 219);
         border-radius: 5px;
         box-shadow: 0px 0px 15px rgba(82, 82, 82, 0.15); 
+        &--active{
+            display: block;
+        }
     }
     .accordion{
         &__head{
@@ -253,13 +282,17 @@ body *{
             font-size: 20px;
             height: 60px;
             border-bottom: 1px solid rgb(219, 219, 219);
+            background-color: #0e48b542;
             &:hover{
-                background-color: #0e48b542;
+                background-color: #0b41a71e;
                 cursor: pointer;
+            }
+            &--active{
+                background-color: transparent;
             }
         }
         &__items{
-            display: flex;
+            display: none;
             justify-content: space-around;
             flex-wrap: wrap;
             border-bottom:1px solid rgb(219, 219, 219) ;
@@ -275,7 +308,7 @@ body *{
             }
             label{
                 margin-bottom: 10px;
-                width:100px;
+                width:110px;
                 &:hover {
                     cursor: pointer;
                 }
@@ -285,8 +318,95 @@ body *{
             }
         }
     }
+   
 }
 
-#sliderRange .slider-selection{
-    background-color: red !important;
+
+.modal {
+    display: none;
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.65);;
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    &__window{
+        display: flex;
+        justify-content: space-ev;
+        width: 1020px;
+        height: 500px;
+        background-color: white;
+        border-radius: 5px;
+        &__first{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid #E2E2E2 ;
+            width: 30%;
+            img{
+                width: 250px;
+                height: 250px;
+            }
+        }
+        &__second{
+            padding: 30px 10px 0 40px;
+            border-right: 1px solid #E2E2E2 ;
+            width: 37%;
+            
+            .container__card__stats{
+                margin-top: 30px;
+                border-radius: 5px;
+            }
+            ul {
+                margin-top: 40px;
+                margin-left: -34px;
+                li {
+                    margin: 5px 0;
+                    list-style: none;
+                }
+            }
+                
+        }
+        &__therst{
+            width: 31%;
+            padding-top: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+            h2{
+                text-align: center;
+            }
+            p{
+                margin-top: 30px;
+                text-align: center;
+            }
+            .buttonInModal{
+                margin-top: 30px;
+                width: 150px;
+                height: 50px;
+                color: white;
+                background-color: #0E49B5 ;
+                border-color: transparent;
+                border-radius: 5px;
+            }
+        }
+    }
+    &.active{
+        display: flex;
+    }
 }
+
+
+
+
+
+
+
+
+
+

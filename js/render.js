@@ -1,12 +1,89 @@
 export const rendarCard = function (item) {
     const container = document.createElement('div');
     container.className = 'container__card';
+    container.onclick = function(){
+        const modal = document.querySelector('.modal');
+        const modalWindow = document.querySelector('.modal__window');
+        modalWindow.onclick = function (event) {
+            event.stopPropagation();
+        }
+        modalWindow.innerHTML = `
+        <div class="modal__window__first">
+                <img src="img/${item.imgUrl}" alt="">
+            </div>
+            <div class="modal__window__second">
+                <h2>${item.name}</h2>
+
+                <div class="container__card__stats">
+                <div class="container__card__stats__info">
+                <div class="container__card__stats__info__favorts">
+                    <i class="fas fa-heart"></i>
+                </div> 
+    
+                <div class="container__card__stats__info__left">
+                    <p>${item.orderInfo.reviews}% Positive reviews</p>
+                    <div class="container__card__stats__info__right__bottom">
+                        <p>Above avarage</p>
+                    </div>
+                </div>
+    
+                <div class="container__card__stats__info__right">
+                    <p>${item.orderInfo.inStock}</p>
+                    <div class="container__card__stats__info__right__bottom">
+                        <p>orders</p>
+                    </div>
+                </div>
+            </div>
+                </div>
+                <ul>
+                    <li>Color: ${item.color} </li>
+                    <li>Operating System: ${item.os} </li>
+                    <li>Chip: ${item.chip.name} </li>
+                    <li>Height:${item.size.height} sm </li>
+                    <li>Width: ${item.size.width} sm  </li>
+                    <li>Depth:${item.size.depth}  sm</li>
+                    <li>Weight:${item.size.weight} kg</li>
+                </ul>
+
+            </div>
+
+            <div class="modal__window__therst">
+                <div class="cont">
+                <h2>$ ${item.price}</h2>
+                <p>Stock ${item.orderInfo.inStock} pcs.</p>
+                `
+                if(item.orderInfo.inStock > 0){
+                    const temp = document.querySelector('.modal__window__therst')
+                    const button = document.createElement('button')
+                    button.className = 'buttonInModal';
+                    button.innerText = 'Add to cart';
+                    temp.appendChild(button)
+
+                }
+                //<button class="buttonInModal">Add to cart</button>
+               `    </div>
+               </div>`
+        
+        ////////////
+        modal.classList.add('active')
+        modal.onclick = function () {
+            modal.classList.remove('active')
+            }
+
+
+    }
+
+
+
+
+
 
     const buttonLike = document.createElement('div');
     buttonLike.className = 'container__card__favorites'
     const imgFavorites = document.createElement('i')
     imgFavorites.className = `${item.isFavorite ? 'fas' : 'far'} fa-heart`;
-    buttonLike.onclick = function () {
+    buttonLike.onclick = function (event) {
+        event.stopPropagation();
         item.isFavorite = !item.isFavorite;
         imgFavorites.className = `${item.isFavorite ? 'fas' : 'far'} fa-heart`;
     }
