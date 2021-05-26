@@ -258,22 +258,11 @@ export const rendarCards = function (arr = items) {
 // }
 // rendarBacket(items)
 
-
-
-export const rendarBacket = function(basketData){
+export const renderBasketContent = basket => {
         const circleWithPrice = document.querySelector('.headerInfo__backetContainer__positionAmount')
-        circleWithPrice.innerText = basketData.totalAmount || 0;
-    
-    const backet = document.querySelector('.headerInfo__backetContainer')
-    backet.onclick = event =>{
-        event.stopPropagation();
-    
+        circleWithPrice.innerText = basket.totalAmount || 0;
         const modal = document.querySelector('.modalBacket');
         modal.onclick = event => event.stopPropagation();
-        
-        
-        const isActive = modal.classList.toggle('modalBacket--active');
-        if (!isActive) return;
     
         modal.innerHTML = `
         <div class="modalBacket__info">
@@ -283,10 +272,10 @@ export const rendarBacket = function(basketData){
             
             <div class="modalBacket__footer">
                 <div class="modalBacket__footer__total">
-                    <p>total amount: 3ptc.</p>
+                    <p>total amount:  ${basket.totalAmount}ptc.</p>
                 </div>
                 <div class="modalBacket__footer__total">
-                    <p>total price: 1699$</p>
+                    <p>total price: ${basket.totalPrice}$</p>
                 </div>
              </div>
 
@@ -375,64 +364,29 @@ export const rendarBacket = function(basketData){
         buttonOrder.innerText = 'buy';
         buttonFotter.appendChild(buttonOrder);
         modal.appendChild(buttonFotter)
-
-
-        
-    //     modal.innerHTML = `
-    //     <div class="modalBacket__info">
-    //     <h3>Shopping Cart</h3>
-    //     <p>Checkout is almost done!</p>
-    // </div>
-    // <div class="modalBacket__good-container">
-    //     <div class="modalBacket__good">
-    //     <div class="modalBacket__good__img">
-    //         <img src="img/items/airpods-max.jpg" alt="">
-    //     </div>
-    //     <div class="modalBacket__good__info">
-    //         <p>name</p>
-    //         <div class="modalBacket__good__info__price">
-    //             <p>${basketData.goodsList.price} $</p>
-    //         </div>    
-    //     </div>
-    //     <div class="modalBacket__good__amount">
-    //         <button class="amount">
-    //             <img src="img/icons/_.png" alt="">
-    //         </button>
-    //         <p>2</p>
-    //         <button class="amount">
-    //             <img src="img/icons/+.png" alt="">
-    //         </button>
-    //     </div>
-    //     <div class="modalBacket__good__delete">
-    //         <button>
-    //             <img src="img/icons/del.png" alt="">
-    //         </button>
-    //     </div>
-    //     </div>
-    // </div>
-    
-    // <div class="modalBacket__footer">
-    //     <div class="modalBacket__footer__total">
-    //         <p>total amount:  ${basketData.totalAmount || 0} ptc.</p>
-    //     </div>
-    //     <div class="modalBacket__footer__total">
-    //         <p>total price: ${basketData.totalPrice || 0} $</p>
-    //     </div>
-        
-    // </div> 
-    // <div class="modalBacket__button">
-    //          <button>Buy</button>
-    //          </div>
-    //     `
-    
-        backet.appendChild(modal)
+        document.querySelector('.headerInfo__backetContainer').appendChild(modal)
         
       
-    }
+}
+
+
+export const rendarBacket = function(basketData){
     
+    const backet = document.querySelector('.headerInfo__backetContainer')
+    backet.onclick = event =>{
+        event.stopPropagation();
     
+        const modal = document.querySelector('.modalBacket');
+        modal.onclick = event => event.stopPropagation();
+        
+        
+        const isActive = modal.classList.toggle('modalBacket--active');
+        if (!isActive) return;
+    
+        renderBasketContent(basketData)
     }
-    rendarBacket(items)
+}    
+    rendarBacket(basket)
     
     
 

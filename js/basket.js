@@ -1,4 +1,4 @@
-import {rendarBacket} from './render.js';
+import {renderBasketContent} from './render.js';
 
  class Basket{
     constructor(){
@@ -48,7 +48,7 @@ import {rendarBacket} from './render.js';
        }
        this.createTotal()
 
-       rendarBacket(this)
+       renderBasketContent(this)
     }
 
     createTotal(){
