@@ -48,6 +48,7 @@ body * {
 }
 
 .headerInfo__backetContainer {
+  position: relative;
   width: 50px;
   height: 50px;
   display: -webkit-box;
@@ -570,5 +571,195 @@ body * {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.modalBacket {
+  display: none;
+  width: 430px;
+  max-height: 540px;
+  padding: 20px 0;
+  background-color: white;
+  position: absolute;
+  z-index: 10000;
+  top: 79px;
+  right: -5px;
+  border: 1px solid #dbdbdb;
+  -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+
+.modalBacket--active {
+  display: block;
+}
+
+.modalBacket__info {
+  border-bottom: 1px solid #dbdbdb;
+  max-height: 342px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.modalBacket__info h3 {
+  font-weight: 700;
+}
+
+.modalBacket__info p {
+  margin-top: 10px;
+}
+
+.modalBacket__good-container {
+  max-height: 252px;
+  overflow-y: auto;
+}
+
+.modalBacket__good-container::-webkit-scrollbar-thumb {
+  background-color: #0E49B5;
+}
+
+.modalBacket__good {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.modalBacket__good__img img {
+  width: 100px;
+  height: 100px;
+}
+
+.modalBacket__good__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.modalBacket__good__info p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.modalBacket__good__info__price {
+  padding: 5px 0;
+  width: 118px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  border-radius: 5px;
+  background-color: rgba(143, 201, 255, 0.363);
+  color: #0084ff;
+}
+
+.modalBacket__good__amount {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modalBacket__good__amount .amount {
+  margin: 0 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+  border-color: transparent;
+  background-color: #3C44B1;
+  width: 20px;
+  height: 20px;
+}
+
+.modalBacket__good__amount .amount img {
+  width: 10px;
+}
+
+.modalBacket__good__delete {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modalBacket__good__delete button {
+  width: 20px;
+  height: 20px;
+  border-color: transparent;
+  background-color: #f832462a;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modalBacket__good__delete button img {
+  width: 10px;
+}
+
+.modalBacket__footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: #EAF6FF;
+  height: 50px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modalBacket__button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.modalBacket__button button {
+  margin-top: 30px;
+  font-size: 18px;
+  width: 250px;
+  height: 50px;
+  color: white;
+  background-color: #3C44B1;
+  border-color: transparent;
+  border-radius: 5px;
 }
 /*# sourceMappingURL=style.css.map */
