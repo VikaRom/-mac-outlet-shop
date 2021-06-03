@@ -188,81 +188,21 @@ export const rendarCards = function (arr = items) {
     }
 }
 
-
-
-
-// export const rendarBacket = function(basketData){
-//     const circleWithPrice = document.querySelector('.headerInfo__backetContainer__positionAmount')
-//     circleWithPrice.innerText = basketData.totalAmount || 0;
-
-// const backet = document.querySelector('.headerInfo__backetContainer')
-// backet.onclick = event =>{
-//     event.stopPropagation();
-//     const modal = document.querySelector('.modalBacket');
-    
-//     const isActive = modal.classList.toggle('modalBacket--active');
-//     if (!isActive) return;
-//     modal.innerHTML = `
-//     <div class="modalBacket__info">
-//     <h3>Shopping Cart</h3>
-//     <p>Checkout is almost done!</p>
-// </div>
-// <div class="modalBacket__good-container">
-//     <div class="modalBacket__good">
-//     <div class="modalBacket__good__img">
-//         <img src="img/items/airpods-max.jpg" alt="">
-//     </div>
-//     <div class="modalBacket__good__info">
-//         <p>name</p>
-//         <div class="modalBacket__good__info__price">
-//             <p>${basketData.goodsList.price} $</p>
-//         </div>    
-//     </div>
-//     <div class="modalBacket__good__amount">
-//         <button class="amount">
-//             <img src="img/icons/_.png" alt="">
-//         </button>
-//         <p>2</p>
-//         <button class="amount">
-//             <img src="img/icons/+.png" alt="">
-//         </button>
-//     </div>
-//     <div class="modalBacket__good__delete">
-//         <button>
-//             <img src="img/icons/del.png" alt="">
-//         </button>
-//     </div>
-//     </div>
-// </div>
-
-// <div class="modalBacket__footer">
-//     <div class="modalBacket__footer__total">
-//         <p>total amount:  ${basketData.totalAmount || 0} ptc.</p>
-//     </div>
-//     <div class="modalBacket__footer__total">
-//         <p>total price: ${basketData.totalPrice || 0} $</p>
-//     </div>
-    
-// </div> 
-// <div class="modalBacket__button">
-//          <button>Buy</button>
-//          </div>
-//     `
-
-//     backet.appendChild(modal)
-    
-  
-// }
-
-
-// }
-// rendarBacket(items)
-
+                                                                            //render basket
 export const renderBasketContent = basket => {
         const circleWithPrice = document.querySelector('.headerInfo__backetContainer__positionAmount')
         circleWithPrice.innerText = basket.totalAmount || 0;
         const modal = document.querySelector('.modalBacket');
         modal.onclick = event => event.stopPropagation();
+        if(basket.totalAmount === 0){
+            modal.innerText = 'cart is empty'
+            modal.innerHTML = `
+            <div class="textForEmptyCart">
+                <h4>cart is empty</h4>
+            </div>`
+        }else{
+
+        
     
         modal.innerHTML = `
         <div class="modalBacket__info">
@@ -282,12 +222,9 @@ export const renderBasketContent = basket => {
         </div>
         `
         
-        // const goodsContainer = document.querySelector('.modalBacket__good')
-        // goodsContainer.innerHTML = '';
         for(let i = 0; i < basket.goodsList.length; i++ ){
             const item = basket.goodsList[i];
 
-            //const goodsContainer = document.querySelector('.modalBacket__good')
             const goodsContainer = document.createElement('div')
             goodsContainer.className = 'modalBacket__good'
 
@@ -314,7 +251,7 @@ export const renderBasketContent = basket => {
             // infoContainer.appendChild(priceContainer)
 
             const pPrice = document.createElement('p')
-            pPrice.innerHTML = `${item.price}`
+            pPrice.innerHTML = `${item.price} $`
             priceContainer.appendChild(pPrice);
             infoContainer.appendChild(priceContainer)
             //
@@ -324,6 +261,9 @@ export const renderBasketContent = basket => {
 
             const buttonAmount = document.createElement('button')
             buttonAmount.className = 'amount';
+            buttonAmount.onclick =() =>{
+                basket.reduceAmountFromItem(item);
+            }
             const imgInButton = document.createElement('img')
             imgInButton.src = `img/icons/_.png`;
             buttonAmount.appendChild(imgInButton);
@@ -335,6 +275,10 @@ export const renderBasketContent = basket => {
 
             const buttonAmount2 = document.createElement('button')
             buttonAmount2.className = 'amount';
+            buttonAmount2.onclick = () =>{
+                basket.addToBacket(item);
+
+            }
             const imgInButton2 = document.createElement('img')
             imgInButton2.src = `img/icons/+.png`;
             buttonAmount2.appendChild(imgInButton2);
@@ -347,6 +291,10 @@ export const renderBasketContent = basket => {
             containerDel.className = 'modalBacket__good__delete';
 
             const buttonDel = document.createElement('button');
+            buttonDel.onclick = function(){
+                basket.removeFromBacket(item)
+            }
+            ////////////////////////
             const imgDel = document.createElement('img');
             imgDel.src = `img/icons/del.png`;
             buttonDel.appendChild(imgDel);
@@ -356,6 +304,10 @@ export const renderBasketContent = basket => {
 
 
             modal.querySelector('.modalBacket__good-container').appendChild(goodsContainer)
+
+            ///////////////////////////////////////                  storage
+            // // localStorage.basket = item;
+            // localStorage.removeItem('basket');
         }
         const buttonFotter = document.createElement('div');
         buttonFotter.className = 'modalBacket__button';
@@ -365,13 +317,13 @@ export const renderBasketContent = basket => {
         buttonFotter.appendChild(buttonOrder);
         modal.appendChild(buttonFotter)
         document.querySelector('.headerInfo__backetContainer').appendChild(modal)
+    }
         
-      
+    
 }
 
 
 export const rendarBacket = function(basketData){
-    
     const backet = document.querySelector('.headerInfo__backetContainer')
     backet.onclick = event =>{
         event.stopPropagation();

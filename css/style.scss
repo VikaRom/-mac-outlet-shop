@@ -251,10 +251,10 @@ body * {
         &__stats {
             margin-top: 10px;
             width: 298px;
-            height: 80px;
+            height: 70px;
             background-color: #dae2ea;
             &__info {
-                padding: 21px;
+                padding: 18px;
                 display: flex;
                 &__right {
                     p {
@@ -452,10 +452,12 @@ body * {
         }
     }
     &__good {
+        height: 110px;
         display: flex;
         justify-content: space-around;
         border-bottom: 1px solid rgb(219, 219, 219);
         &__img {
+            margin-top: 5px;
             img {
                 width: 100px;
                 height: 100px;
@@ -484,6 +486,9 @@ body * {
         &__amount {
             display: flex;
             align-items: center;
+            p {
+                margin: 0;
+            }
             .amount {
                 margin: 0 10px;
                 display: flex;
@@ -539,4 +544,12 @@ body * {
             border-radius: 5px;
         }
     }
+}
+
+
+
+.textForEmptyCart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

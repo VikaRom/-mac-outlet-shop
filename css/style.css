@@ -390,12 +390,12 @@ body * {
 .container__card__stats {
   margin-top: 10px;
   width: 298px;
-  height: 80px;
+  height: 70px;
   background-color: #dae2ea;
 }
 
 .container__card__stats__info {
-  padding: 21px;
+  padding: 18px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -660,12 +660,17 @@ body * {
 }
 
 .modalBacket__good {
+  height: 110px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   border-bottom: 1px solid #dbdbdb;
+}
+
+.modalBacket__good__img {
+  margin-top: 5px;
 }
 
 .modalBacket__good__img img {
@@ -716,6 +721,10 @@ body * {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.modalBacket__good__amount p {
+  margin: 0;
 }
 
 .modalBacket__good__amount .amount {
@@ -803,5 +812,17 @@ body * {
   background-color: #3c44b1;
   border-color: transparent;
   border-radius: 5px;
+}
+
+.textForEmptyCart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=style.css.map */

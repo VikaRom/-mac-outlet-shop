@@ -1,4 +1,5 @@
 import { rendarCards } from './render.js';
+import { FindService } from './filter.js';
 
 import { slider } from './slider.js'
 
@@ -6,8 +7,10 @@ import { slider } from './slider.js'
 
 rendarCards(items)
 
-class Filter {
+class Filter extends FindService{
+
     constructor() {
+        super()
         this.filterData = [
             {
                 name: 'Price',
@@ -15,23 +18,26 @@ class Filter {
             },
             {
                 name: 'Color',
-                options: this.initialColor
-                // options: ['Red', 'Black', 'Green', 'white']
+                options: this.initialColor,
+                type: 'colors'
+                
             },
             {
                 name: 'Memory',
-                options: this.initialMemory
-                //options: ['32', '64', '128', '512']
+                options: this.initialMemory,
+                type: 'memory'
             },
             {
                 name: 'OS',
-                options: this.initialOS
-                //options: ['IOS', 'MAC OS', 'TV OS', 'Watch OS']
+                options: this.initialOS,
+                type: 'os'
+                
             },
         ]
 
-        this.rendarFilters(this.filterData)
-
+        this.rendarFilters()
+        this.setSearch();
+        this.setCancel()
         //console.log(this.initialPrice)
     }
 
@@ -78,8 +84,19 @@ class Filter {
         //console.log(newArr);
         return newArr;
     }
-
-
+    setCancel(){
+        const settings = document.querySelector('.ButtonForFolterSecond')
+        settings.onclick = function(){
+            this.cancelOptions()
+        }
+    }
+    setSearch(){
+        const search = document.querySelector('.search')
+        search.addEventListener('input', event => {
+            const value = event.target.value;
+            this.search = value;
+        })
+    }
     rendarFilter(item) {
         const container = document.createElement('div');
         container.className = 'accordion';
@@ -115,9 +132,14 @@ class Filter {
 
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
+                checkbox.onchange = e => {
+                    this[item.type] = option;
+                }
                 label.prepend(checkbox);
 
                 accordion_items.appendChild(label);
+
+
             })
         }
 
@@ -126,10 +148,10 @@ class Filter {
         return container;
     }
 
-    rendarFilters(arr) {
+    rendarFilters() {
         const filterContainer = document.querySelector('.filter');
         filterContainer.innerHTML = '';
-        arr.forEach(el => {
+        this.filterData.forEach(el => {
             const filter = this.rendarFilter(el);
             filterContainer.appendChild(filter);
         })
@@ -150,31 +172,20 @@ class Filter {
             <span>To: ${priceTo} $</span>
         `
         }).on('slideStop', e => {
-            console.log(e)
+            this.price = e.value
         });
     }
 
 }
 const filter = new Filter()
 
+console.log(filter)
+
 $('.single-item').slick({
     autoplay: true,
     infinite: true,
     arrows: true,
 });
-
-
-
-const search = function () {
-    let search = document.querySelector('.search')
-    search.addEventListener('input', event => {
-        const result = items.filter(pizza => pizza.name.toLowerCase().includes(event.target.value.toLowerCase()))
-
-        rendarCards(result)
-    })
-}
-search()
-
 
 
 
